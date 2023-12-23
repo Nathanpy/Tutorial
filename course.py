@@ -31,6 +31,12 @@ class Course:
         if not isinstance(enroll, Enroll):
             raise ValueError("Invalid Enroll")
         
+        if len(self.enrollments) == self.max:
+            raise ValueError("Cannot enroll, course is full...")
+        
         self.enrollments.append(enroll)
+
+    def is_cancelled(self):
+        return len(self.enrollments) < self.min
 
                 
